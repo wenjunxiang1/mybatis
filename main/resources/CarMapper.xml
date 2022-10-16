@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+
+    <insert id="insertCar">
+        <!--map集合的sql语句-->
+        <!--insert into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+        values(null,#{car_num},#{brand},#{guide_price},#{produce_time},#{car_type});-->
+
+        <!--封装类的sql语句，{}里写pojo类的属性名-->
+        insert into t_car(id,car_num,brand,guide_price,produce_time,car_type)
+        values(null,#{carNum},#{brand},#{guidePrice},#{produceTime},#{carType})
+    </insert>
+
+    <delete id="deleteCar">
+        <!--{}只有一个时，随便写一个-->
+        delete from t_car where id = #{effe}
+    </delete>
+
+    <update id="updateCar">
+        update t_car set car_num=#{carNum},brand=#{brand},guide_price=#{guidePrice},
+        produce_time=#{produceTime},car_type=#{carType} where id=#{id}
+    </update>
+
+    <!--查询要在resultType中设置-->
+    <select id="selectCar01" resultType="map">
+        select * from t_car where id = #{wedw}
+    </select>
+
+    <select id="selectCar02" resultType="map">
+        select * from t_car
+    </select>
+</mapper>
